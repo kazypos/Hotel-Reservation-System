@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\AccountController.cs" />
+    <Compile Include="Control\MasterController.cs" />
+    <Compile Include="Entity\Booking.cs" />
+    <Compile Include="Entity\BookingDetail.cs" />
+    <Compile Include="Entity\Customer.cs" />
+    <Compile Include="Entity\Hotel.cs" />
+    <Compile Include="Entity\Login.cs" />
+    <Compile Include="Entity\Room.cs" />
+    <Compile Include="Entity\RoomType.cs" />
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\DatabaseConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Staff\View\LoginView.cs">
@@ -79,9 +91,6 @@
     <Folder Include="Administration\Control\" />
     <Folder Include="Administration\Model\" />
     <Folder Include="Administration\View\" />
-    <Folder Include="Control\" />
-    <Folder Include="Entity\" />
-    <Folder Include="Model\" />
     <Folder Include="Staff\Control\" />
     <Folder Include="Staff\Model\" />
   </ItemGroup>
