@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HotelReservationSystem.View
+namespace HotelReservationSystem.Staff.View
 {
     public partial class LoginView : Form
     {

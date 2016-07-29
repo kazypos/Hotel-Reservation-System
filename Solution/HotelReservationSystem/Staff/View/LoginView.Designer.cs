@@ -1,4 +1,4 @@
-﻿namespace HotelReservationSystem.View
+﻿namespace HotelReservationSystem.Staff.View
 {
     partial class LoginView
     {
@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // LoginView
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "LoginView";
-            this.Text = "Sign in System";
-            this.ResumeLayout(false);
-
+            this.Text = "LoginView";
         }
 
         #endregion
     }
 }
-
