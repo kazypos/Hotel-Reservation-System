@@ -119,6 +119,7 @@
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.panel1);
             this.Name = "StaffView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

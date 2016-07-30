@@ -11,7 +11,7 @@ namespace HotelReservationSystem.Entity
         public string RoomNo { get; set; }
         public string HotelCode { get; set; }
         public int TypeCode { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public bool Busy { get; set; }
 
     }
