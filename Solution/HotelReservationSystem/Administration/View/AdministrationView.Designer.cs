@@ -36,6 +36,7 @@
             this.btnAddNewHotel = new System.Windows.Forms.Button();
             this.btnAddNewRoomType = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +112,7 @@
             this.btnAddNewRoomType.TabIndex = 0;
             this.btnAddNewRoomType.Text = "Add a new room type";
             this.btnAddNewRoomType.UseVisualStyleBackColor = true;
+            this.btnAddNewRoomType.Click += new System.EventHandler(this.btnAddNewRoomType_Click);
             // 
             // btnLogout
             // 
@@ -122,11 +124,23 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // lblUsername
+            // 
+            this.lblUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(356, 12);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(351, 28);
+            this.lblUsername.TabIndex = 2;
+            this.lblUsername.Text = "asdfasdfasdjfjaskdhfkjhaskdjhfjkhasjkdfh";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // AdministrationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 303);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.panel1);
             this.Name = "AdministrationView";
@@ -146,5 +160,6 @@
         private System.Windows.Forms.Button btnAddNewHotel;
         private System.Windows.Forms.Button btnAddNewRoomType;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label lblUsername;
     }
 }
