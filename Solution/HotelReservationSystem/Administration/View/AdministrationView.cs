@@ -40,5 +40,10 @@ namespace HotelReservationSystem.Administration.View
         {
             control.LoadForm(new AddNewRoomTypeView());
         }
+
+        private void btnUpdateRoomPrice_Click(object sender, EventArgs e)
+        {
+            control.LoadForm(new UpdateRoomPriceView());
+        }
     }
 }

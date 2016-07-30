@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="Administration\Control\AddNewRoomTypeController.cs" />
     <Compile Include="Administration\Control\AdministrationController.cs" />
+    <Compile Include="Administration\Control\UpdateRoomPriceController.cs" />
     <Compile Include="Administration\Model\AddNewRoomTypeModel.cs" />
+    <Compile Include="Administration\Model\UpdateRoomPriceModel.cs" />
     <Compile Include="Administration\View\AddNewRoomTypeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +62,12 @@
     </Compile>
     <Compile Include="Administration\View\AdministrationView.Designer.cs">
       <DependentUpon>AdministrationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\View\UpdateRoomPriceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administration\View\UpdateRoomPriceView.Designer.cs">
+      <DependentUpon>UpdateRoomPriceView.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\LoginController.cs" />
     <Compile Include="Entity\Booking.cs" />
@@ -92,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\AdministrationView.resx">
       <DependentUpon>AdministrationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administration\View\UpdateRoomPriceView.resx">
+      <DependentUpon>UpdateRoomPriceView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

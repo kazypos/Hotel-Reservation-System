@@ -72,6 +72,7 @@
             this.btnUpdateRoomPrice.TabIndex = 4;
             this.btnUpdateRoomPrice.Text = "Update room price";
             this.btnUpdateRoomPrice.UseVisualStyleBackColor = true;
+            this.btnUpdateRoomPrice.Click += new System.EventHandler(this.btnUpdateRoomPrice_Click);
             // 
             // btnAddNewStaff
             // 
@@ -144,6 +145,7 @@
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.panel1);
             this.Name = "AdministrationView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administration";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
