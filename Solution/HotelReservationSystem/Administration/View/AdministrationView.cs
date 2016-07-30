@@ -17,6 +17,16 @@ namespace HotelReservationSystem.Administration.View
         AdministrationController control;
         public AdministrationView()
         {
+            Init();
+        }
+
+        public AdministrationView(string username)
+        {
+            Init();
+            lblUsername.Text = username;
+        }
+
+        private void Init() {
             InitializeComponent();
             control = new AdministrationController(this);
         }
@@ -24,6 +34,11 @@ namespace HotelReservationSystem.Administration.View
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddNewRoomType_Click(object sender, EventArgs e)
+        {
+            control.LoadForm(new AddNewRoomTypeView());
         }
     }
 }

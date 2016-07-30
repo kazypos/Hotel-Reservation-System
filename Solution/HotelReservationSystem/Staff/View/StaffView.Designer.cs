@@ -34,6 +34,7 @@
             this.btnUpdateInforStaff = new System.Windows.Forms.Button();
             this.btnAddNewCustomer = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,19 +91,31 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(539, 11);
+            this.btnLogout.Location = new System.Drawing.Point(539, 7);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.Size = new System.Drawing.Size(75, 27);
             this.btnLogout.TabIndex = 1;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(182, 7);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(351, 28);
+            this.lblUsername.TabIndex = 3;
+            this.lblUsername.Text = "asdfasdfasdjfjaskdhfkjhaskdjhfjkhasjkdfh";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // StaffView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 368);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.panel1);
             this.Name = "StaffView";
@@ -120,5 +133,6 @@
         private System.Windows.Forms.Button btnUpdateInforStaff;
         private System.Windows.Forms.Button btnAddNewCustomer;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label lblUsername;
     }
 }

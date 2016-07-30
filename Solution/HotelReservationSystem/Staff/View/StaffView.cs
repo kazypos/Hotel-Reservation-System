@@ -16,12 +16,21 @@ namespace HotelReservationSystem.Staff.View
         StaffController control;
         public StaffView()
         {
+            Init();
+        }
+
+        public StaffView(string username)
+        {
+            Init();
+            lblUsername.Text = username;
+        }
+
+        private void Init()
+        {
             InitializeComponent();
             control = new StaffController(this);
         }
-        public void loadSomeThing()
-        {
-        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();

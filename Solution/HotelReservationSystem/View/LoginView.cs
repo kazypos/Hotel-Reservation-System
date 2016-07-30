@@ -22,9 +22,16 @@ namespace HotelReservationSystem.View
         {
             InitializeComponent();
             control = new LoginController(this);
+            this.Activated += LoginView_Activated;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void LoginView_Activated(object sender, EventArgs e)
+        {
+            txtUserName.Focus();
+            txtUserName.SelectAll();
+        }
+
+        private void LoginProcess()
         {
             Login l = new Login();
             l.LoginId = txtUserName.Text;
@@ -37,22 +44,45 @@ namespace HotelReservationSystem.View
                 // do something
                 if (l.Roles)
                 {
-                    control.LoadForm(new AdministrationView());
+                    control.LoadForm(new AdministrationView(txtUserName.Text));
                 }
                 else
                 {
-                    control.LoadForm(new StaffView());
+                    control.LoadForm(new StaffView(txtUserName.Text));
                 }
             }
             else
             {
                 MessageBox.Show("Login failed!");
             }
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            LoginProcess();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtPassword.Focus();
+            }
+
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                LoginProcess();
+            }
         }
     }
 }
