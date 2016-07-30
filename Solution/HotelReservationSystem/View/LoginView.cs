@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelReservationSystem.Control;
 using HotelReservationSystem.Entity;
+using HotelReservationSystem.Administration.View;
+using HotelReservationSystem.Staff.View;
+
 
 namespace HotelReservationSystem.View
 {
     public partial class LoginView : Form
     {
-        LoginController lc;
+        LoginController control;
         public LoginView()
         {
             InitializeComponent();
-            lc = new LoginController();
+            control = new LoginController(this);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -27,12 +30,19 @@ namespace HotelReservationSystem.View
             l.LoginId = txtUserName.Text;
             l.LoginPassword = txtPassword.Text;
             l.Roles = radioBtnAdmin.Checked;
-            if (lc.Login(l))
+            if (control.Login(l))
             {
                 txtPassword.Text = "";
                 MessageBox.Show("Login successful!");
                 // do something
-
+                if (l.Roles)
+                {
+                    control.LoadForm(new AdministrationView());
+                }
+                else
+                {
+                    control.LoadForm(new StaffView());
+                }
             }
             else
             {

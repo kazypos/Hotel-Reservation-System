@@ -3,25 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HotelReservationSystem.Model;
-using HotelReservationSystem.Entity;
 using System.Windows.Forms;
 
-namespace HotelReservationSystem.Control
+namespace HotelReservationSystem.Administration.Control
 {
-    class LoginController
+    class AdministrationController
     {
-        LoginModel model;
         Form view;
-        public LoginController(Form view)
+        public AdministrationController(Form view)
         {
-            model = new LoginModel();
             this.view = view;
-        }
 
-        public bool Login(Login accountEntry)
-        {
-            return model.CheckLogin(accountEntry);
         }
         public void LoadForm(Form frm)
         {

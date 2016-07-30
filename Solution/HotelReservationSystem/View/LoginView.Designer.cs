@@ -140,6 +140,7 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.groupBox1);
             this.Name = "LoginView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign in System";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

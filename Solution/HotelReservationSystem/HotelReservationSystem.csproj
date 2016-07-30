@@ -46,8 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administration\Control\AdministrationController.cs" />
+    <Compile Include="Administration\View\AdministrationView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administration\View\AdministrationView.Designer.cs">
+      <DependentUpon>AdministrationView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\LoginController.cs" />
-    <Compile Include="Control\MasterController.cs" />
     <Compile Include="Entity\Booking.cs" />
     <Compile Include="Entity\BookingDetail.cs" />
     <Compile Include="Entity\Customer.cs" />
@@ -59,6 +65,13 @@
     <Compile Include="Model\DatabaseConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff\Control\StaffController.cs" />
+    <Compile Include="Staff\View\StaffView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff\View\StaffView.Designer.cs">
+      <DependentUpon>StaffView.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestDatabase.cs" />
     <Compile Include="View\LoginView.cs">
       <SubType>Form</SubType>
@@ -66,6 +79,9 @@
     <Compile Include="View\LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administration\View\AdministrationView.resx">
+      <DependentUpon>AdministrationView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +91,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Staff\View\StaffView.resx">
+      <DependentUpon>StaffView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,12 +111,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administration\Control\" />
     <Folder Include="Administration\Model\" />
-    <Folder Include="Administration\View\" />
-    <Folder Include="Staff\Control\" />
     <Folder Include="Staff\Model\" />
-    <Folder Include="Staff\View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
