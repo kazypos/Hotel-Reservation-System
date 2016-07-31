@@ -204,7 +204,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "UpdateRoomPriceView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UpdateRoomPriceView";
+            this.Text = "Update room price";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

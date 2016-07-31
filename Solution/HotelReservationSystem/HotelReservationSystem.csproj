@@ -48,8 +48,10 @@
   <ItemGroup>
     <Compile Include="Administration\Control\AddNewRoomTypeController.cs" />
     <Compile Include="Administration\Control\AdministrationController.cs" />
+    <Compile Include="Administration\Control\PrintSummaryAdminController.cs" />
     <Compile Include="Administration\Control\UpdateRoomPriceController.cs" />
     <Compile Include="Administration\Model\AddNewRoomTypeModel.cs" />
+    <Compile Include="Administration\Model\PrintSummaryAdminModel.cs" />
     <Compile Include="Administration\Model\UpdateRoomPriceModel.cs" />
     <Compile Include="Administration\View\AddNewRoomTypeView.cs">
       <SubType>Form</SubType>
@@ -62,6 +64,12 @@
     </Compile>
     <Compile Include="Administration\View\AdministrationView.Designer.cs">
       <DependentUpon>AdministrationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\View\PrintSummaryAdminView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administration\View\PrintSummaryAdminView.Designer.cs">
+      <DependentUpon>PrintSummaryAdminView.cs</DependentUpon>
     </Compile>
     <Compile Include="Administration\View\UpdateRoomPriceView.cs">
       <SubType>Form</SubType>
@@ -100,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\AdministrationView.resx">
       <DependentUpon>AdministrationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administration\View\PrintSummaryAdminView.resx">
+      <DependentUpon>PrintSummaryAdminView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\UpdateRoomPriceView.resx">
       <DependentUpon>UpdateRoomPriceView.cs</DependentUpon>

@@ -62,6 +62,7 @@
             this.btnPrintSummnary.TabIndex = 5;
             this.btnPrintSummnary.Text = "Print summary";
             this.btnPrintSummnary.UseVisualStyleBackColor = true;
+            this.btnPrintSummnary.Click += new System.EventHandler(this.btnPrintSummnary_Click);
             // 
             // btnUpdateRoomPrice
             // 
