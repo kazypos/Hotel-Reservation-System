@@ -35,5 +35,10 @@ namespace HotelReservationSystem.Staff.View
         {
             this.Close();
         }
+
+        private void btnMakeNewBooking_Click(object sender, EventArgs e)
+        {
+            control.LoadForm(new MakeNewBookingView());
+        }
     }
 }
