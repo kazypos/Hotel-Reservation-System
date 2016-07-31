@@ -12,7 +12,7 @@ namespace HotelReservationSystem.Entity
         public string RoomNo { get; set; }
         public DateTime CheckinDate { get; set; }
         public DateTime CheckoutDate { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
 
     }
 }

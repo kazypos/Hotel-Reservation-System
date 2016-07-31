@@ -68,6 +68,7 @@
             this.btnMakeNewBooking.TabIndex = 2;
             this.btnMakeNewBooking.Text = "Make a new booking";
             this.btnMakeNewBooking.UseVisualStyleBackColor = true;
+            this.btnMakeNewBooking.Click += new System.EventHandler(this.btnMakeNewBooking_Click);
             // 
             // btnUpdateInforStaff
             // 
