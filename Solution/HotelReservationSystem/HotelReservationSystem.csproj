@@ -46,21 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administration\Control\AddNewHotelController.cs" />
     <Compile Include="Administration\Control\AddNewRoomTypeController.cs" />
     <Compile Include="Administration\Control\AdministrationController.cs" />
     <Compile Include="Administration\Control\PrintSummaryAdminController.cs" />
     <Compile Include="Administration\Control\UpdateRoomPriceController.cs" />
-    <Compile Include="Administration\Model\AddNewHotelModel.cs" />
     <Compile Include="Administration\Model\AddNewRoomTypeModel.cs" />
     <Compile Include="Administration\Model\PrintSummaryAdminModel.cs" />
     <Compile Include="Administration\Model\UpdateRoomPriceModel.cs" />
-    <Compile Include="Administration\View\AddNewHotelView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Administration\View\AddNewHotelView.Designer.cs">
-      <DependentUpon>AddNewHotelView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Administration\View\AddNewRoomTypeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,9 +111,6 @@
     <Compile Include="View\LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Administration\View\AddNewHotelView.resx">
-      <DependentUpon>AddNewHotelView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\AddNewRoomTypeView.resx">
       <DependentUpon>AddNewRoomTypeView.cs</DependentUpon>
     </EmbeddedResource>
