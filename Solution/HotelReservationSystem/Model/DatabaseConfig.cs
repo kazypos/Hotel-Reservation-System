@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+
 namespace HotelReservationSystem.Model
 {
     class DatabaseConfig
@@ -13,6 +14,7 @@ namespace HotelReservationSystem.Model
             ConnectionStrings["HotelReservationConnnectionString"].
             ConnectionString.ToString();
         static SqlConnection conn;
+
         public static SqlConnection OpenConnection()
         {
             conn = new SqlConnection(connectionString);
