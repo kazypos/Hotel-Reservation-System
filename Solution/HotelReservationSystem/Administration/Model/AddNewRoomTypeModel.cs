@@ -38,7 +38,6 @@ namespace HotelReservationSystem.Administration.Model
             bool result = false;
 
             string sql = "SELECT count(*) FROM RoomType WHERE TypeName = '" + typeRoom + "'";
-            MessageBox.Show(sql);
             SqlCommand cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
 
             int count = (int)cmd.ExecuteScalar();

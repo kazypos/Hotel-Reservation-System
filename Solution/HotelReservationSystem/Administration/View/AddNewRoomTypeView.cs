@@ -62,12 +62,5 @@ namespace HotelReservationSystem.Administration.View
             this.Close();
         }
 
-        private void txtTypeName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar== Convert.ToChar(Keys.Enter))
-            {
-                CheckValidTypeRoom();
-            }
-        }
     }
 }
