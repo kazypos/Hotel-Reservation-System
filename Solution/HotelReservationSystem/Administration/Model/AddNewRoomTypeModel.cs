@@ -13,10 +13,6 @@ namespace HotelReservationSystem.Administration.Model
     {
         public bool AddNewRoomType(string typeName)
         {
-            if (CheckExist(typeName))
-            {
-                return false;
-            }
             bool result = false;
 
             string sql = "INSERT INTO RoomType(TypeName) VALUES(@type)";
@@ -37,14 +33,15 @@ namespace HotelReservationSystem.Administration.Model
             return result;
         }
 
-        private bool CheckExist(string typeRoom)
+        public bool CheckExist(string typeRoom)
         {
             bool result = false;
 
-            string sql = "SELECT * FROM RoomType WHERE TypeName='" + typeRoom + "'";
+            string sql = "SELECT count(*) FROM RoomType WHERE TypeName = '" + typeRoom + "'";
             SqlCommand cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
-            SqlDataReader dr= cmd.ExecuteReader();
-            if (dr.Read())
+
+            int count = (int)cmd.ExecuteScalar();
+            if (count > 0)
             {
                 result = true;
             }

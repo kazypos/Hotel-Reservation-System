@@ -39,7 +39,10 @@ namespace HotelReservationSystem.Administration.View
             comboRoomType.ValueMember = "TypeCode";
             comboRoomType.DataSource = control.RoomTypes;
 
-            inDate = datePickerIn.Value.Date;
+            String tmp = DateTime.Now.ToShortDateString();
+            datePickerOut.Value = Convert.ToDateTime(tmp) + new TimeSpan(1, 0, 0, 0, 0);
+            datePickerIn.Value = Convert.ToDateTime(tmp);
+            inDate = datePickerIn.Value;
             outDate = datePickerOut.Value.Date;
         }
 
@@ -67,7 +70,14 @@ namespace HotelReservationSystem.Administration.View
 
         private void btnViewRevenue_Click(object sender, EventArgs e)
         {
-            FillTableStatistic();
+            if ((outDate-inDate).Days>0)
+            {
+                FillTableStatistic();
+            }
+            else
+            {
+                MessageBox.Show("Check-out date must be greater than check-in date");
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

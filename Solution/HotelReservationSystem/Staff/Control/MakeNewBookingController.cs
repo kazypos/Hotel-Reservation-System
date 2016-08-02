@@ -26,94 +26,113 @@ namespace HotelReservationSystem.Staff.Control
             return model.CustomerName(code);
         }
 
+        /// <summary>
+        ///  1.get table room booked from database
+        ///  2.join table room booked with table room pre-booking
+        ///     follow RoomNo
+        ///  3. Create 1 Dictionary to mark RoomNo not avaiable follow check-in date and check-out date
+        ///  4. filter RoomNo avaiable with marked RoomNo Dictionary
+        ///  
+        /// </summary>
+        /// <param name="hotelCode"> hotel code</param>
+        /// <param name="roomType"> type of room</param>
+        /// <param name="inDate"> check-in date</param>
+        /// <param name="outDate"> check-out date</param>
+        /// <param name="dataTable"> table Room pre-booking </param>
+        /// <returns>table room avaiable</returns>
         public DataTable AvaiableRooms(string hotelCode, string roomType, DateTime inDate, DateTime outDate, DataTable dataTable)
         {
-            string sql = "SELECT DISTINCT r.RoomNo, r.Price "
-                        + "FROM[HotelReservation].[dbo].[Room] r left join [HotelReservation].[dbo].[BookingDetail] "
+            string sql = "SELECT r.RoomNo,r.Price,bd.CheckinDate,bd.CheckoutDate "
+                        + " FROM [HotelReservation].[dbo].[Room] r left join [HotelReservation].[dbo].[BookingDetail] "
                         + "bd on r.RoomNo= bd.RoomNo "
-                        + "WHERE (((bd.CheckinDate not between '" + inDate.ToString("yyyy-MM-dd") + "' and '" + outDate.ToString("yyyy-MM-dd") + "') "
-                        + "and (bd.CheckoutDate not between '" + inDate.ToString("yyyy-MM-dd") + "' and '" + outDate.ToString("yyyy-MM-dd") + "')";
-            sql += " ) or CheckinDate is null)";
-            if (dataTable.Rows.Count > 0)
-            {
-                sql += " and ( ";
-                for (int i = 0; i < dataTable.Rows.Count; i++)
-                {
-                    sql += "(";
-
-                    sql += " (('"
-                        + ((DateTime)dataTable.Rows[i]["Check in"]).ToString("yyyy-MM-dd")
-                        + "' not between '"
-                        + inDate.ToString("yyyy-MM-dd")
-                        + "' and '"
-                        + outDate.ToString("yyyy-MM-dd")
-                        + "') "
-                        + "and " +
-                        "('"
-                        + ((DateTime)dataTable.Rows[i]["Check out"]).ToString("yyyy-MM-dd")
-                        + "' not between '"
-                        + inDate.ToString("yyyy-MM-dd")
-                        + "' and '"
-                        + outDate.ToString("yyyy-MM-dd")
-                        + "'))";
-
-                    sql += " or ";
-
-                    sql += "('"
-                        + dataTable.Rows[i]["HotelCode"].ToString()
-                        + "' <> '"
-                        + hotelCode
-                        + "')";
-
-                    sql += " or ";
-
-                    sql += "("
-                        + dataTable.Rows[i]["RoomType"].ToString()
-                        + " <> "
-                        + roomType
-                        + ")";
-
-                    sql += " or ";
-
-                    sql += "('"
-                        + dataTable.Rows[i]["RoomNo"].ToString()
-                        + "' <> "
-                        + " r.RoomNo "
-                        + ")";
-
-
-                    sql += ")";
-
-                    if (i < dataTable.Rows.Count - 1)
-                    {
-                        sql += " and ";
-                    }
-                }
-
-                sql += " ) ";
-            }
-            sql += "and r.HotelCode='" + hotelCode + "' "
+                        + "WHERE ";
+            sql += " r.HotelCode='" + hotelCode + "' "
             + "and r.TypeCode=" + roomType;
 
-            return model.AvaiableRooms(sql);
+            // table Room booked
+            DataTable dtSelect = model.AvaiableRooms(sql);
+
+            DataTable result = new DataTable();
+            result.Columns.Add("RoomNo");
+            result.Columns.Add("Price");
+
+            // use to mark RoomNo busy 
+            Dictionary<string, bool> marksBusy = new Dictionary<string, bool>();
+
+            // xoa het gio phut giay
+            string tmp = inDate.ToShortDateString();
+            inDate = Convert.ToDateTime(tmp);
+
+            tmp = outDate.ToShortDateString();
+            outDate = Convert.ToDateTime(tmp);
+
+            // add pre-book to list room booked
+            if (dataTable.Rows.Count>0)
+            {
+                int sizeOriginal = dtSelect.Rows.Count;
+                for (int k = 0; k < sizeOriginal; k++)
+                {
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        if (dataTable.Rows[i]["RoomNo"].ToString().Equals(dtSelect.Rows[k]["RoomNo"].ToString()))
+                        {
+                            DataRow dr = dtSelect.NewRow();
+                            dr[0] = dataTable.Rows[i]["RoomNo"].ToString();
+                            dr[1] = dataTable.Rows[i]["Price per night"];
+                            dr[2] = dataTable.Rows[i]["Check in"];
+                            dr[3] = dataTable.Rows[i]["Check out"];
+                            dtSelect.Rows.Add(dr);
+                        }
+                    }
+                }
+            }
+
+            // filter follow checkin date and checkout date
+            for (int i = 0; i < dtSelect.Rows.Count; i++)
+            {
+                if (dtSelect.Rows[i]["CheckinDate"].ToString().Equals(""))
+                {
+                   
+                }
+                else
+                {
+                    DateTime checkinDate = (DateTime)dtSelect.Rows[i]["CheckinDate"];
+                    DateTime checkoutDate = (DateTime)dtSelect.Rows[i]["CheckoutDate"];
+
+                    if (outDate<=checkinDate || inDate>=checkoutDate)
+                    {
+                    }
+                    else
+                    {
+                        //MessageBox.Show("Add " + dtSelect.Rows[i][2].ToString());
+                        // mark RoomNo is busy
+                        if (!marksBusy.ContainsKey(dtSelect.Rows[i][0].ToString()))
+                        {
+                            marksBusy.Add(dtSelect.Rows[i][0].ToString(), true);
+                        }
+                    }
+                }
+            }
+
+            // return RoomNo isn't busy
+            for (int i = 0; i < dtSelect.Rows.Count; i++)
+            {
+                if (!marksBusy.ContainsKey(dtSelect.Rows[i]["RoomNo"].ToString()))
+                {
+                    DataRow dr = result.NewRow();
+                    dr[0] = dtSelect.Rows[i][0];
+                    dr[1] = dtSelect.Rows[i][1];
+                    result.Rows.Add(dr);
+                    marksBusy.Add(dtSelect.Rows[i][0].ToString(), true);
+                }
+            }
+
+            return result;
         }
 
         public bool CreateBooking(string customerCode, DataTable dataTable)
         {
-            bool result = false;
-            Booking b = new Booking();
-            b.BookingDate = DateTime.Now;
-            b.CustomerCode = customerCode;
-
-            result = model.CreateBooking(b);
-            int code = model.GetCodeBooking();
-
-            return (result && CreateBookingDetail(code, dataTable));
-        }
-
-        public bool CreateBookingDetail(int code, DataTable dataTable)
-        {
-            return model.CreateBookingDetail(code, dataTable);
+            return (model.CreateBooking(customerCode, dataTable));
         }
     }
 }
