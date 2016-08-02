@@ -33,9 +33,28 @@ namespace HotelReservationSystem.Administration.View
                 MessageBox.Show("Add new room type failed!");
             }
         }
+
+        private void CheckValidTypeRoom() {
+            if (txtTypeName.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Please enter room type!");
+            }
+            else
+            {
+                if (!control.CheckExist(txtTypeName.Text.Trim()))
+                {
+                    AddNewRoomType();
+                }
+                else
+                {
+                    MessageBox.Show("Room type \"" + txtTypeName.Text.Trim() + "\" existed");
+                }
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            AddNewRoomType();
+            CheckValidTypeRoom();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -47,7 +66,7 @@ namespace HotelReservationSystem.Administration.View
         {
             if (e.KeyChar== Convert.ToChar(Keys.Enter))
             {
-                AddNewRoomType();
+                CheckValidTypeRoom();
             }
         }
     }
