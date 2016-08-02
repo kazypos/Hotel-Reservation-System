@@ -53,7 +53,7 @@ namespace HotelReservationSystem.Staff.Model
         public DataTable AvaiableRooms(string sql)
         {
             List<string> list = new List<string>();
-            
+
 
             SqlDataAdapter sda = new SqlDataAdapter(sql, DatabaseConfig.connectionString);
             DataTable dt = new DataTable();
@@ -61,65 +61,48 @@ namespace HotelReservationSystem.Staff.Model
             return dt;
         }
 
-        public bool CreateBooking(Booking booking)
+        public bool CreateBooking(string customerCode, DataTable dataTable)
         {
-            bool result = false;
-            string sql = "INSERT INTO Booking(CustomerCode,BookingDate) VALUES(@customerCode,@bookingDate)";
-
-            SqlCommand cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
-
-            cmd.Parameters.AddWithValue("@customerCode", booking.CustomerCode);
-            cmd.Parameters.AddWithValue("@bookingDate", booking.BookingDate.ToString());
-
-            int i = cmd.ExecuteNonQuery();
-            if (i > 0)
-            {
-                result = true;
-            }
-
-            DatabaseConfig.CloseConnection();
-
-            return result;
-        }
-
-        public int GetCodeBooking()
-        {
-            int result = -1;
-            string sql = "SELECT TOP 1 * FROM Booking ORDER BY Code DESC";
-            SqlCommand cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                result = dr.GetInt32(0);
-            }
-
-            DatabaseConfig.CloseConnection();
-            return result;
-
-        }
-
-        public bool CreateBookingDetail(int code, DataTable dataTable)
-        {
-            bool result = true;
-            string sql = "INSERT INTO BookingDetail VALUES(@code,@roomNo,@CheckinDate,@CheckoutDate,@Price)";
             SqlConnection conn = new SqlConnection(DatabaseConfig.connectionString);
             conn.Open();
+            SqlCommand cmd;
+            string sql = "";
 
+            bool result = true;
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                /// insert into booking
+                sql = "INSERT INTO Booking(CustomerCode,BookingDate) VALUES(@customerCode,@bookingDate)";
+                cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@customerCode", customerCode);
+                cmd.Parameters.AddWithValue("@bookingDate", DateTime.Now.ToString());
 
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                //////////////////////////////
+
+                /// get code of newest booking
+                sql = "SELECT TOP 1 * FROM Booking ORDER BY Code DESC";
+                cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
+                int code = (int)cmd.ExecuteScalar();
+                cmd.Dispose();
+                /////////////////////////////////
+
+                /// insert into BookingDetail
+                sql = "INSERT INTO BookingDetail VALUES(@code,@roomNo,@CheckinDate,@CheckoutDate,@Price)";
+                cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@code", code);
                 cmd.Parameters.AddWithValue("@roomNo", dataTable.Rows[i]["RoomNo"].ToString());
                 cmd.Parameters.AddWithValue("@CheckinDate", ((DateTime)dataTable.Rows[i]["Check in"]).ToString());
                 cmd.Parameters.AddWithValue("@CheckoutDate", ((DateTime)dataTable.Rows[i]["Check out"]).ToString());
-                cmd.Parameters.AddWithValue("@Price", dataTable.Rows[i]["Total price"].ToString());
+                cmd.Parameters.AddWithValue("@Price", dataTable.Rows[i]["Price per night"].ToString());
 
                 int check = cmd.ExecuteNonQuery();
                 result = (result && check > 0);
 
                 cmd.Dispose();
+                //////////////////////////
             }
 
             conn.Close();

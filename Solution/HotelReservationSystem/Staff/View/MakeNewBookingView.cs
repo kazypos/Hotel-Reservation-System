@@ -48,9 +48,13 @@ namespace HotelReservationSystem.Staff.View
             comboRoomType.ValueMember = "TypeCode";
             comboRoomType.DataSource = control.RoomTypes;
 
+
             // init inDate and outDate
-            inDate = datePickerIn.Value.Date;
-            outDate = datePickerOut.Value.Date;
+            String tmp = DateTime.Now.ToShortDateString();
+            datePickerOut.Value = Convert.ToDateTime(tmp) + new TimeSpan(1, 0, 1, 0);
+            inDate = (datePickerIn.Value = Convert.ToDateTime(tmp));
+            outDate = datePickerOut.Value;
+
 
             dataTable = new DataTable();
             dataTable.Columns.Add("HotelCode", typeof(string));
@@ -100,6 +104,7 @@ namespace HotelReservationSystem.Staff.View
                 if (control.CreateBooking(customerCode, dataTable))
                 {
                     MessageBox.Show("Booking successful!");
+                    dataTable.Rows.Clear();
                 }
                 else
                 {
@@ -118,11 +123,12 @@ namespace HotelReservationSystem.Staff.View
 
             dr["RoomNo"] = roomNo;
             dr["Price per night"] = priceRoom;
-            dr["Check in"] = inDate;
-            dr["Check out"] = outDate;
+
+            dr["Check in"] = inDate.ToString("MM-dd-yyy");
+            dr["Check out"] = outDate.ToString("MM/dd/yyy");
 
             TimeSpan ts = outDate - inDate;
-            int day = ts.Days + 1 > 0 ? ts.Days + 1 : 0;
+            int day = ts.Days;
 
             dr["Number of night(s)"] = day;
             dr["Total price"] = day * priceRoom;
@@ -171,20 +177,40 @@ namespace HotelReservationSystem.Staff.View
 
         private void datePickerIn_ValueChanged(object sender, EventArgs e)
         {
+            if (datePickerIn.Value < DateTime.Now)
+            {
+                if ((DateTime.Now- datePickerIn.Value).Days>0)
+                {
+                    MessageBox.Show("Checkin must be greater than or equal now!");
+                }
+                
+                datePickerIn.Value = DateTime.Now;
+            }
             inDate = datePickerIn.Value.Date;
+            outDate = datePickerOut.Value.Date;
+            if ((outDate - inDate).Days <= 0)
+            {
+                datePickerOut.Value = datePickerIn.Value + new TimeSpan(1, 0, 0, 0);
+            }
             ClearListRoomAvaiable();
         }
 
         private void datePickerOut_ValueChanged(object sender, EventArgs e)
         {
             outDate = datePickerOut.Value.Date;
+            if ((outDate - inDate).Days <= 0)
+            {
+                MessageBox.Show("Checkout must greater than checkin 1 day");
+                datePickerOut.Value = datePickerIn.Value + new TimeSpan(1, 0, 0, 0);
+            }
+            outDate = datePickerOut.Value.Date;
             ClearListRoomAvaiable();
         }
 
         private void btnViewAvailableRooms_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show((new DateTime(2016, 9, 16,9,0,0) - new DateTime(2016, 9, 17,5,0,0)).Days.ToString());
             UpdateListRoomAvaiable();
-
         }
 
         private void comboHotel_SelectedIndexChanged(object sender, EventArgs e)
