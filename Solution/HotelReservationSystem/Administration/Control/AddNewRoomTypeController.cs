@@ -20,5 +20,10 @@ namespace HotelReservationSystem.Administration.Control
         {
             return model.AddNewRoomType(type);
         }
+
+        public bool CheckExist(string typeRoom)
+        {
+            return model.CheckExist(typeRoom);
+        }
     }
 }
