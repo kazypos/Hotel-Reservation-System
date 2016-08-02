@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using HotelReservationSystem.View;
+using HotelReservationSystem.Administration.View;
 using HotelReservationSystem.Staff.View;
 
 namespace HotelReservationSystem
@@ -18,7 +20,7 @@ namespace HotelReservationSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MakeNewBookingView());
+            Application.Run(new LoginView());
         }
     }
 }
