@@ -26,83 +26,86 @@ namespace HotelReservationSystem.Staff.Control
             return model.CustomerName(code);
         }
 
+        /// <summary>
+        ///  1.get table room booked from database
+        ///  2.join table room booked with table room pre-booking
+        ///     follow RoomNo
+        ///  3. Create 1 Dictionary to mark RoomNo not avaiable follow check-in date and check-out date
+        ///  4. filter RoomNo avaiable with marked RoomNo Dictionary
+        ///  
+        /// </summary>
+        /// <param name="hotelCode"> hotel code</param>
+        /// <param name="roomType"> type of room</param>
+        /// <param name="inDate"> check-in date</param>
+        /// <param name="outDate"> check-out date</param>
+        /// <param name="dataTable"> table Room pre-booking </param>
+        /// <returns>table room avaiable</returns>
         public DataTable AvaiableRooms(string hotelCode, string roomType, DateTime inDate, DateTime outDate, DataTable dataTable)
         {
-            string sql = "SELECT DISTINCT r.RoomNo,r.Price,bd.CheckinDate,bd.CheckoutDate "
+            string sql = "SELECT r.RoomNo,r.Price,bd.CheckinDate,bd.CheckoutDate "
                         + " FROM [HotelReservation].[dbo].[Room] r left join [HotelReservation].[dbo].[BookingDetail] "
                         + "bd on r.RoomNo= bd.RoomNo "
                         + "WHERE ";
             sql += " r.HotelCode='" + hotelCode + "' "
             + "and r.TypeCode=" + roomType;
 
+            // table Room booked
             DataTable dtSelect = model.AvaiableRooms(sql);
 
             DataTable result = new DataTable();
             result.Columns.Add("RoomNo");
             result.Columns.Add("Price");
 
+            // use to mark RoomNo busy 
             Dictionary<string, bool> marksBusy = new Dictionary<string, bool>();
 
+            // xoa het gio phut giay
+            string tmp = inDate.ToShortDateString();
+            inDate = Convert.ToDateTime(tmp);
+
+            tmp = outDate.ToShortDateString();
+            outDate = Convert.ToDateTime(tmp);
+
+            // add pre-book to list room booked
+            if (dataTable.Rows.Count>0)
+            {
+                int sizeOriginal = dtSelect.Rows.Count;
+                for (int k = 0; k < sizeOriginal; k++)
+                {
+                    for (int i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        if (dataTable.Rows[i]["RoomNo"].ToString().Equals(dtSelect.Rows[k]["RoomNo"].ToString()))
+                        {
+                            DataRow dr = dtSelect.NewRow();
+                            dr[0] = dataTable.Rows[i]["RoomNo"].ToString();
+                            dr[1] = dataTable.Rows[i]["Price per night"];
+                            dr[2] = dataTable.Rows[i]["Check in"];
+                            dr[3] = dataTable.Rows[i]["Check out"];
+                            dtSelect.Rows.Add(dr);
+                        }
+                    }
+                }
+            }
+
+            // filter follow checkin date and checkout date
             for (int i = 0; i < dtSelect.Rows.Count; i++)
             {
                 if (dtSelect.Rows[i]["CheckinDate"].ToString().Equals(""))
                 {
-                    DataRow dr = result.NewRow();
-                    dr[0] = dtSelect.Rows[i][0];
-                    dr[1] = dtSelect.Rows[i][1];
-                    result.Rows.Add(dr);
-                    MessageBox.Show("Add " + dtSelect.Rows[i][0].ToString());
-                    marksBusy.Add(dtSelect.Rows[i][0].ToString(), true);
+                   
                 }
                 else
                 {
-                    //MessageBox.Show(dtSelect.Rows[i]["CheckinDate"].ToString());
-
                     DateTime checkinDate = (DateTime)dtSelect.Rows[i]["CheckinDate"];
                     DateTime checkoutDate = (DateTime)dtSelect.Rows[i]["CheckoutDate"];
 
-                    MessageBox.Show(checkinDate + "\n" + checkoutDate);
-                    MessageBox.Show(inDate + "\n" + outDate);
-
-                    bool checkTemp = false;
-                    if (checkinDate >= inDate && checkinDate <= outDate)
+                    if (outDate<=checkinDate || inDate>=checkoutDate)
                     {
-                        checkTemp = true;
                     }
-                    if (checkoutDate >= inDate && checkoutDate <= outDate)
+                    else
                     {
-                        checkTemp = true;
-                    }
-
-                    if (dataTable.Rows.Count > 0)
-                    {
-                        for (int j = 0; j < dataTable.Rows.Count; j++)
-                        {
-                            if (dataTable.Rows[j]["RoomNo"].ToString().Equals(dtSelect.Rows[i]["RoomNo"].ToString())
-                                && hotelCode.Equals(dataTable.Rows[j]["HotelCode"].ToString())
-                                && roomType.Equals(dataTable.Rows[j]["RoomType"].ToString())
-                                )
-                            {
-                                DateTime inDateBooking = (DateTime)dataTable.Rows[j]["Check in"];
-                                DateTime outDateBooking = (DateTime)dataTable.Rows[j]["Check out"];
-                                if (checkinDate > inDateBooking && checkinDate <= outDateBooking)
-                                {
-                                    checkTemp = true;
-                                    break;
-                                }
-                                if (checkoutDate > inDateBooking && checkoutDate <= outDateBooking)
-                                {
-                                    checkTemp = true;
-                                    break;
-                                }
-                            }
-
-                        }
-                    }
-
-                    if (checkTemp)
-                    {
-                        MessageBox.Show("Add " + dtSelect.Rows[i][0].ToString());
+                        //MessageBox.Show("Add " + dtSelect.Rows[i][2].ToString());
+                        // mark RoomNo is busy
                         if (!marksBusy.ContainsKey(dtSelect.Rows[i][0].ToString()))
                         {
                             marksBusy.Add(dtSelect.Rows[i][0].ToString(), true);
@@ -110,6 +113,8 @@ namespace HotelReservationSystem.Staff.Control
                     }
                 }
             }
+
+            // return RoomNo isn't busy
             for (int i = 0; i < dtSelect.Rows.Count; i++)
             {
                 if (!marksBusy.ContainsKey(dtSelect.Rows[i]["RoomNo"].ToString()))
@@ -118,6 +123,7 @@ namespace HotelReservationSystem.Staff.Control
                     dr[0] = dtSelect.Rows[i][0];
                     dr[1] = dtSelect.Rows[i][1];
                     result.Rows.Add(dr);
+                    marksBusy.Add(dtSelect.Rows[i][0].ToString(), true);
                 }
             }
 

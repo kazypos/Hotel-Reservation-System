@@ -183,6 +183,7 @@
             this.datePickerOut.Name = "datePickerOut";
             this.datePickerOut.Size = new System.Drawing.Size(98, 20);
             this.datePickerOut.TabIndex = 7;
+            this.datePickerOut.Value = new System.DateTime(2016, 8, 3, 0, 0, 0, 0);
             this.datePickerOut.ValueChanged += new System.EventHandler(this.datePickerOut_ValueChanged);
             // 
             // datePickerIn
@@ -193,6 +194,7 @@
             this.datePickerIn.Name = "datePickerIn";
             this.datePickerIn.Size = new System.Drawing.Size(98, 20);
             this.datePickerIn.TabIndex = 6;
+            this.datePickerIn.Value = new System.DateTime(2016, 7, 31, 0, 0, 0, 0);
             this.datePickerIn.ValueChanged += new System.EventHandler(this.datePickerIn_ValueChanged);
             // 
             // label7

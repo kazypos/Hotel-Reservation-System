@@ -96,7 +96,7 @@ namespace HotelReservationSystem.Staff.Model
                 cmd.Parameters.AddWithValue("@roomNo", dataTable.Rows[i]["RoomNo"].ToString());
                 cmd.Parameters.AddWithValue("@CheckinDate", ((DateTime)dataTable.Rows[i]["Check in"]).ToString());
                 cmd.Parameters.AddWithValue("@CheckoutDate", ((DateTime)dataTable.Rows[i]["Check out"]).ToString());
-                cmd.Parameters.AddWithValue("@Price", dataTable.Rows[i]["Total price"].ToString());
+                cmd.Parameters.AddWithValue("@Price", dataTable.Rows[i]["Price per night"].ToString());
 
                 int check = cmd.ExecuteNonQuery();
                 result = (result && check > 0);
