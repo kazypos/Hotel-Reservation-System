@@ -41,9 +41,9 @@ namespace HotelReservationSystem.Administration.Model
                     + "bd.RoomNo,"
                     + "CONVERT(VARCHAR(15), [CheckinDate], 101) AS[Checkin Date] ,"
                     + "CONVERT(VARCHAR(15), [CheckoutDate], 101) AS[Checkout Date] ,"
-                    + "[Number of night(s)]=Day([CheckoutDate]-[CheckinDate]),"
-                    + "r.Price as[Price per night],"
-                    + "[Total amount]=r.Price* Day([CheckoutDate]-[CheckinDate]),"
+                    + "[Number of night(s)]=Day([CheckoutDate]-[CheckinDate])-1,"
+                    + "bd.Price as[Price per night],"
+                    + "[Total amount]=bd.Price* (Day([CheckoutDate]-[CheckinDate])-1),"
                     + "b.Code as [Booking id],"
                     + "CONVERT(VARCHAR(15), b.BookingDate, 101) AS 'Booking Date'"
 
