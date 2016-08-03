@@ -104,6 +104,7 @@
             this.btnAddNewHotel.TabIndex = 1;
             this.btnAddNewHotel.Text = "Add a new hotel";
             this.btnAddNewHotel.UseVisualStyleBackColor = true;
+            this.btnAddNewHotel.Click += new System.EventHandler(this.btnAddNewHotel_Click);
             // 
             // btnAddNewRoomType
             // 
