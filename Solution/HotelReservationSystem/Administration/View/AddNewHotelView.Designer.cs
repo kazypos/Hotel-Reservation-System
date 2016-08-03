@@ -133,6 +133,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddNewHotelView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add a new hotel";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
