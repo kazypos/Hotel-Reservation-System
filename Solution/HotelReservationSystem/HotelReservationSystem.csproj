@@ -67,6 +67,12 @@
     <Compile Include="Administration\View\AddNewRoomTypeView.Designer.cs">
       <DependentUpon>AddNewRoomTypeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administration\View\AddNewStaffView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administration\View\AddNewStaffView.Designer.cs">
+      <DependentUpon>AddNewStaffView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administration\View\AdministrationView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\AddNewRoomTypeView.resx">
       <DependentUpon>AddNewRoomTypeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administration\View\AddNewStaffView.resx">
+      <DependentUpon>AddNewStaffView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\AdministrationView.resx">
       <DependentUpon>AdministrationView.cs</DependentUpon>
