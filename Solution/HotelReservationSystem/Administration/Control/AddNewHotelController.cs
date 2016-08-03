@@ -18,5 +18,13 @@ namespace HotelReservationSystem.Administration.Control
         {
             return model.AddNewHotel(code,name,address);
         }
+        public bool CheckExistName(string name)
+        {
+            return model.CheckExistName(name);
+        }
+        public bool CheckExistCode(string code)
+        {
+            return model.CheckExistCode(code);
+        }
     }
 }

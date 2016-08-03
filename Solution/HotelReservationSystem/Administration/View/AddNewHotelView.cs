@@ -38,9 +38,37 @@ namespace HotelReservationSystem.Administration.View
             }
         }
 
+        private void CheckValidHotel()
+        {
+            if (txtCode.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Please enter hotelcode!");
+            }
+            else if (txtName.Text.Trim().Equals(""))
+                {
+                    MessageBox.Show("Please enter hotelname!");
+                }
+                else if (txtAddress.Text.Trim().Equals(""))
+                    {
+                         MessageBox.Show("Please enter address!");
+                    }
+                    else if (!control.CheckExistCode(txtCode.Text.Trim()) && !control.CheckExistName(txtName.Text.Trim()))
+                        {
+                            AddNewHotel();
+                        }
+                        else if (control.CheckExistCode(txtCode.Text.Trim()))
+                            {
+                                MessageBox.Show("Code '" + txtCode.Text.Trim() + "' is existed");
+                            }
+                            else
+                            {
+                                 MessageBox.Show("Name '" + txtName.Text.Trim() + "' is existed");
+                            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            AddNewHotel();
+            CheckValidHotel();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

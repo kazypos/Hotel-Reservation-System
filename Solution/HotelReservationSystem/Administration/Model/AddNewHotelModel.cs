@@ -12,7 +12,7 @@ namespace HotelReservationSystem.Administration.Model
     {
         public bool AddNewHotel(string code,string name, string address)
         {
-            if (CheckExist(name))
+            if (CheckExistName(name)||CheckExistCode(code))
             {
                 return false;
             }
@@ -37,10 +37,23 @@ namespace HotelReservationSystem.Administration.Model
 
             return result;
         }
-        private bool CheckExist(string hotel)
+        public bool CheckExistName(string name)
         {
             bool result = false;
-            string sql = "SELECT * FROM Hotel WHERE Name='" + hotel + "'";
+            string sql = "SELECT * FROM Hotel WHERE Name='" + name + "'";
+            SqlCommand cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                result = true;
+            }
+            DatabaseConfig.CloseConnection();
+            return result;
+        }
+        public bool CheckExistCode(string code)
+        {
+            bool result = false;
+            string sql = "SELECT * FROM Hotel WHERE Code='" + code + "'";
             SqlCommand cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
             SqlDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
