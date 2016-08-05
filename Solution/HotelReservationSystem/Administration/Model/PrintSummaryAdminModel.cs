@@ -49,8 +49,11 @@ namespace HotelReservationSystem.Administration.Model
 
                     + "FROM(BookingDetail bd inner join Booking b on bd.Code= b.Code inner join Room r on (bd.RoomNo = r.RoomNo))"
 
-                    + "where HotelCode='" + hoteCode + "' and TypeCode=" + roomType + " and "
-                    + "bd.[CheckinDate] between convert(smalldatetime, '" + inDate.ToString("yyyy-MM-dd") + "', 120) and convert(smalldatetime, '" + outDate.ToString("yyyy-MM-dd") + "', 120)";
+                    + "where (HotelCode='" + hoteCode + "' and TypeCode=" + roomType + " )and "
+                    + "((bd.[CheckinDate] >= convert(smalldatetime, '" + inDate.ToString("yyyy-MM-dd") + "', 120) and bd.[CheckinDate]<convert(smalldatetime, '" + outDate.ToString("yyyy-MM-dd") + "', 120))"
+                    + "or (bd.[CheckoutDate] > convert(smalldatetime, '" + inDate.ToString("yyyy-MM-dd") + "', 120) and bd.[CheckoutDate] < convert(smalldatetime, '" + outDate.ToString("yyyy-MM-dd") + "', 120))"
+                    + "or (bd.[CheckoutDate] > convert(smalldatetime, '" + inDate.ToString("yyyy-MM-dd") + "', 120) and bd.[CheckinDate] <= convert(smalldatetime, '" + inDate.ToString("yyyy-MM-dd") + "', 120)))";
+
 
             SqlDataAdapter sda = new SqlDataAdapter(sql, DatabaseConfig.connectionString);
             DataTable dt = new DataTable();
