@@ -89,6 +89,7 @@
             this.btnAddNewCustomer.TabIndex = 0;
             this.btnAddNewCustomer.Text = "Add new customer";
             this.btnAddNewCustomer.UseVisualStyleBackColor = true;
+            this.btnAddNewCustomer.Click += new System.EventHandler(this.btnAddNewCustomer_Click);
             // 
             // btnLogout
             // 
