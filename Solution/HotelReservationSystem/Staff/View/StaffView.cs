@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelReservationSystem.Staff.Control;
+using HotelReservationSystem.View;
 
 namespace HotelReservationSystem.Staff.View
 {
@@ -34,6 +35,11 @@ namespace HotelReservationSystem.Staff.View
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddNewCustomer_Click(object sender, EventArgs e)
+        {
+            control.LoadForm(new AddNewCustomerView());
         }
     }
 }
