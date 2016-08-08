@@ -46,5 +46,10 @@ namespace HotelReservationSystem.Staff.View
             control.LoadForm(new AddNewCustomerView());
 
         }
+
+        private void btnUpdateInforStaff_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

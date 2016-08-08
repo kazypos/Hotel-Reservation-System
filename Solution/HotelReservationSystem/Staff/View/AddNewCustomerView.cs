@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelReservationSystem.Staff.Control;
 
-namespace HotelReservationSystem.View
+namespace HotelReservationSystem.Staff.View
 {
     public partial class AddNewCustomerView : Form
     {

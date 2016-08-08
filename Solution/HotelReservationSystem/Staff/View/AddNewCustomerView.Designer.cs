@@ -1,4 +1,4 @@
-﻿namespace HotelReservationSystem.View
+﻿namespace HotelReservationSystem.Staff.View
 {
     partial class AddNewCustomerView
     {

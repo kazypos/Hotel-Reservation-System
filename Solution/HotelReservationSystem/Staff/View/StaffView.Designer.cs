@@ -79,6 +79,7 @@
             this.btnUpdateInforStaff.TabIndex = 1;
             this.btnUpdateInforStaff.Text = "Update information of staff";
             this.btnUpdateInforStaff.UseVisualStyleBackColor = true;
+            this.btnUpdateInforStaff.Click += new System.EventHandler(this.btnUpdateInforStaff_Click);
             // 
             // btnAddNewCustomer
             // 
