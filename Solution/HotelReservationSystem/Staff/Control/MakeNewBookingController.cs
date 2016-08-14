@@ -13,11 +13,24 @@ namespace HotelReservationSystem.Staff.Control
     class MakeNewBookingController
     {
         MakeNewBookingModel model;
-
-        public MakeNewBookingController()
+        Form view;
+        public MakeNewBookingController(Form view)
         {
+            this.view = view;
             model = new MakeNewBookingModel();
         }
+        public void LoadForm(Form frm)
+        {
+            frm.FormClosed += Event_FormClosed;
+            view.Hide();
+            frm.Show();
+        }
+
+        private void Event_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            view.Show();
+        }
+
         public DataTable Hotels { get { return model.Hotels; } }
         public DataTable RoomTypes { get { return model.RoomTypes; } }
 
