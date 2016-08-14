@@ -19,14 +19,36 @@ namespace HotelReservationSystem.Staff.View
             InitializeComponent();
             control = new AddNewCustomerController();
         }
-        
+        private void CheckValidCustomer()
+        {
+            if (txtCode.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Please enter customer code!");
+            }
+            else if (control.CheckExist(txtCode.Text.Trim()))
+            {
+                MessageBox.Show("Code '" + txtCode.Text.Trim() + "' is existed");
+            }
+            else if (txtName.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Please enter customer name!");
+            }
+            else if (txtAddress.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Please enter address!");
+            }
+            else if (!control.CheckExist(txtCode.Text.Trim()))
+            {
+                AddNewCustomer();
+            }
+
+        }
         private void AddNewCustomer()
         {
-           
-            if (control.AddNewCustomer(txtCode.Text,txtName.Text,txtAddress.Text))
+            if (control.AddNewCustomer(txtCode.Text, txtName.Text, txtAddress.Text))
             {
                 MessageBox.Show("Add new customer successful!");
-                groupBox1.ResetText();
+                txtCode.Text = txtName.Text = txtAddress.Text = "";
                 txtCode.Focus();
             }
             else
@@ -38,7 +60,7 @@ namespace HotelReservationSystem.Staff.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            AddNewCustomer();
+            CheckValidCustomer();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

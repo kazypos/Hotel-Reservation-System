@@ -26,8 +26,6 @@ namespace HotelReservationSystem.Administration.View
                 MessageBox.Show("A new hotel has been added!!!");
                 txtCode.Text = txtName.Text = txtAddress.Text = "";
                 txtCode.Focus();
-                txtName.Focus();
-                txtAddress.Focus();
             }
             else
             {
@@ -44,26 +42,28 @@ namespace HotelReservationSystem.Administration.View
             {
                 MessageBox.Show("Please enter hotelcode!");
             }
+            else if (control.CheckExistCode(txtCode.Text.Trim()))
+            {
+                MessageBox.Show("Code '" + txtCode.Text.Trim() + "' is existed");
+            }
             else if (txtName.Text.Trim().Equals(""))
-                {
-                    MessageBox.Show("Please enter hotelname!");
-                }
-                else if (txtAddress.Text.Trim().Equals(""))
-                    {
-                         MessageBox.Show("Please enter address!");
-                    }
-                    else if (!control.CheckExistCode(txtCode.Text.Trim()) && !control.CheckExistName(txtName.Text.Trim()))
-                        {
-                            AddNewHotel();
-                        }
-                        else if (control.CheckExistCode(txtCode.Text.Trim()))
-                            {
-                                MessageBox.Show("Code '" + txtCode.Text.Trim() + "' is existed");
-                            }
-                            else
-                            {
-                                 MessageBox.Show("Name '" + txtName.Text.Trim() + "' is existed");
-                            }
+            {
+                MessageBox.Show("Please enter hotelname!");
+            }
+            //else if (control.CheckExistName(txtName.Text.Trim()))
+            //{
+            //    MessageBox.Show("Name '" + txtName.Text.Trim() + "' is existed");
+            //}
+            else if (txtAddress.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Please enter address!");
+            }
+            else if (!control.CheckExistCode(txtCode.Text.Trim())
+                //&& !control.CheckExistName(txtName.Text.Trim())
+                )
+            {
+                AddNewHotel();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

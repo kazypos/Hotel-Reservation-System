@@ -39,7 +39,7 @@ namespace HotelReservationSystem.Staff.View
         private void btnMakeNewBooking_Click(object sender, EventArgs e)
         {
             control.LoadForm(new MakeNewBookingView());
-	}
+        }
 
         private void btnAddNewCustomer_Click(object sender, EventArgs e)
         {

@@ -38,7 +38,7 @@ namespace HotelReservationSystem.Staff.View
 
         private void Init()
         {
-            control = new MakeNewBookingController();
+            control = new MakeNewBookingController(this);
 
             comboHotel.DisplayMember = "Name";
             comboHotel.ValueMember = "Code";
@@ -228,7 +228,7 @@ namespace HotelReservationSystem.Staff.View
         private void btnCreateNewCustomer_Click(object sender, EventArgs e)
         {
             // show new form register customer and hide this form
-            MessageBox.Show("This feature in progress develop");
+            control.LoadForm(new AddNewCustomerView());
         }
 
         private void btnBook_Click(object sender, EventArgs e)

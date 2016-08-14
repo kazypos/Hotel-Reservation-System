@@ -48,39 +48,39 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(39, 44);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(442, 188);
+            this.groupBox1.Size = new System.Drawing.Size(416, 256);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Enter information of Customer";
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(143, 115);
+            this.txtAddress.Location = new System.Drawing.Point(120, 141);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(197, 67);
+            this.txtAddress.Size = new System.Drawing.Size(245, 101);
             this.txtAddress.TabIndex = 5;
             this.txtAddress.Text = "";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(143, 86);
+            this.txtName.Location = new System.Drawing.Point(120, 86);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(197, 20);
+            this.txtName.Size = new System.Drawing.Size(245, 20);
             this.txtName.TabIndex = 4;
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(143, 34);
+            this.txtCode.Location = new System.Drawing.Point(120, 34);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(197, 20);
+            this.txtCode.Size = new System.Drawing.Size(245, 20);
             this.txtCode.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 144);
+            this.label3.Location = new System.Drawing.Point(40, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 2;
@@ -89,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 89);
+            this.label2.Location = new System.Drawing.Point(40, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 1;
@@ -106,7 +106,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(124, 275);
+            this.btnSave.Location = new System.Drawing.Point(131, 274);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -116,7 +116,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(288, 274);
+            this.btnClose.Location = new System.Drawing.Point(253, 274);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
@@ -128,11 +128,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 358);
+            this.ClientSize = new System.Drawing.Size(438, 309);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddNewCustomerView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewCustomerView";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

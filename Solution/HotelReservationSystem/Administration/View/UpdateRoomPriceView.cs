@@ -89,6 +89,7 @@ namespace HotelReservationSystem.Administration.View
                     if (control.UpdateNewPrice(roomNo, hotelCode, newPrice))
                     {
                         MessageBox.Show("Update new price successful!");
+                        txtOldPrice.Text = newPrice.ToString();
                     }
                     else
                     {
@@ -106,6 +107,11 @@ namespace HotelReservationSystem.Administration.View
                 MessageBox.Show("New price invalid!");
                 txtNewPrice.SelectAll();
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

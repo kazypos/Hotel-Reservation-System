@@ -13,10 +13,6 @@ namespace HotelReservationSystem.Staff.Model
     {
         public bool AddNewCustomer(string customerCode,string customerName, string customerAddress)
         {
-            if (CheckExist(customerCode))
-            {
-                return false;
-            }
             bool result = false;
 
             string sql = "INSERT INTO Customer(Code,Name,Address) VALUES(@code,@name,@address)";
@@ -39,7 +35,7 @@ namespace HotelReservationSystem.Staff.Model
             return result;
         }
 
-        private bool CheckExist(string customerCode)
+        public bool CheckExist(string customerCode)
         {
             bool result = false;
 

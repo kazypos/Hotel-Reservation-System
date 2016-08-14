@@ -21,5 +21,9 @@ namespace HotelReservationSystem.Staff.Control
         {
             return model.AddNewCustomer(customerCode,customerName,customerAddress);
         }
+
+        public bool CheckExist(string customerCode) {
+            return model.CheckExist(customerCode);
+        }
     }
 }
