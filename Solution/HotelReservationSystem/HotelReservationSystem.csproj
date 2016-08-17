@@ -48,11 +48,13 @@
   <ItemGroup>
     <Compile Include="Administration\Control\AddNewHotelController.cs" />
     <Compile Include="Administration\Control\AddNewRoomTypeController.cs" />
+    <Compile Include="Administration\Control\AddNewStaffController.cs" />
     <Compile Include="Administration\Control\AdministrationController.cs" />
     <Compile Include="Administration\Control\PrintSummaryAdminController.cs" />
     <Compile Include="Administration\Control\UpdateRoomPriceController.cs" />
     <Compile Include="Administration\Model\AddNewHotelModel.cs" />
     <Compile Include="Administration\Model\AddNewRoomTypeModel.cs" />
+    <Compile Include="Administration\Model\AddNewStaffModel.cs" />
     <Compile Include="Administration\Model\PrintSummaryAdminModel.cs" />
     <Compile Include="Administration\Model\UpdateRoomPriceModel.cs" />
     <Compile Include="Administration\View\AddNewHotelView.cs">
@@ -103,7 +105,6 @@
     <Compile Include="Model\DatabaseConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <Compile Include="Staff\Control\MakeNewBookingController.cs" />
     <Compile Include="Staff\Control\StaffController.cs" />
     <Compile Include="Staff\Model\MakeNewBookingModel.cs" />
@@ -113,12 +114,10 @@
     <Compile Include="Staff\View\MakeNewBookingView.Designer.cs">
       <DependentUpon>MakeNewBookingView.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Staff\Control\AddNewCustomerController.cs" />
     <Compile Include="Staff\Control\UpdateInformationOfStaffController.cs" />
     <Compile Include="Staff\Model\AddNewCustomerModel.cs" />
     <Compile Include="Staff\Model\UpdateInformationOfStaffModel.cs" />
-
     <Compile Include="Staff\View\StaffView.cs">
       <SubType>Form</SubType>
     </Compile>
