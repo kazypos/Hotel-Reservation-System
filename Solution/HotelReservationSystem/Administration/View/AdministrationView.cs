@@ -60,5 +60,10 @@ namespace HotelReservationSystem.Administration.View
         {
             control.LoadForm(new AddNewStaffView());
         }
+
+        private void AddNewRoom_Click(object sender, EventArgs e)
+        {
+            control.LoadForm(new AddNewRoomView());
+        }
     }
 }

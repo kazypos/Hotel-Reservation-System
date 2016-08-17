@@ -95,6 +95,7 @@
             this.AddNewRoom.TabIndex = 3;
             this.AddNewRoom.Text = "Add a new room";
             this.AddNewRoom.UseVisualStyleBackColor = true;
+            this.AddNewRoom.Click += new System.EventHandler(this.AddNewRoom_Click);
             // 
             // btnAddNewHotel
             // 
