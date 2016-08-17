@@ -84,6 +84,7 @@
             this.btnAddNewStaff.TabIndex = 2;
             this.btnAddNewStaff.Text = "Add a new staff";
             this.btnAddNewStaff.UseVisualStyleBackColor = true;
+            this.btnAddNewStaff.Click += new System.EventHandler(this.btnAddNewStaff_Click);
             // 
             // AddNewRoom
             // 
