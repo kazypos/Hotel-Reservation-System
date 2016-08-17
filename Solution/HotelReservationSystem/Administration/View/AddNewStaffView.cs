@@ -47,6 +47,10 @@ namespace HotelReservationSystem.Administration.View
             {
                 MessageBox.Show("Please enter Username!");
             }
+            else if (controller.CheckUserExist(txtUserName.Text.Trim()))
+            {
+                MessageBox.Show(txtUserName.Text.Trim() + " existed !!!");
+            }
             else if (txtPassword.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Please enter Password!");
