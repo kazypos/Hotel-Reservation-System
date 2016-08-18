@@ -23,9 +23,9 @@ namespace HotelReservationSystem.Administration.Control
             return model.AddNewRoom(hotelcode, type, roomno, price, busy);
         }
 
-        public bool CheckRoomExist(string roomno,string hotelcode)
+        public bool CheckRoomExist(string roomno)
         {
-            return model.CheckRoomExist(roomno, hotelcode);
+            return model.CheckRoomExist(roomno);
         }
     }
 }

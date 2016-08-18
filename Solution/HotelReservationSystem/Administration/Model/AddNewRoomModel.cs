@@ -57,11 +57,10 @@ namespace HotelReservationSystem.Administration.Model
             return result;
         }
 
-        public bool CheckRoomExist(string roomno,string hotelcode)
+        public bool CheckRoomExist(string roomno)
         {
             bool result = false;
-            string sql = "select * from Room where RoomNo='" + roomno 
-                         + "' and hotelcode = '" + hotelcode + "'";
+            string sql = "select * from Room where RoomNo='" + roomno + "'";
             SqlCommand cmd = new SqlCommand(sql, DatabaseConfig.OpenConnection());
             SqlDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
