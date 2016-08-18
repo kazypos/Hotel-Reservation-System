@@ -37,7 +37,7 @@ namespace HotelReservationSystem.Staff.View
             {
                 MessageBox.Show("Please enter address!");
             }
-            else if (!control.CheckExist(txtCode.Text.Trim()))
+            else
             {
                 AddNewCustomer();
             }

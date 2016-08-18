@@ -115,7 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Staff\Control\MakeNewBookingController.cs" />
     <Compile Include="Staff\Control\StaffController.cs" />
+    <Compile Include="Staff\Control\UpdateInformationOfStaffController.cs" />
     <Compile Include="Staff\Model\MakeNewBookingModel.cs" />
+    <Compile Include="Staff\Model\UpdateInformationOfStaffModel.cs" />
     <Compile Include="Staff\View\MakeNewBookingView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,9 +125,7 @@
       <DependentUpon>MakeNewBookingView.cs</DependentUpon>
     </Compile>
     <Compile Include="Staff\Control\AddNewCustomerController.cs" />
-    <Compile Include="Staff\Control\UpdateInformationOfStaffController.cs" />
     <Compile Include="Staff\Model\AddNewCustomerModel.cs" />
-    <Compile Include="Staff\Model\UpdateInformationOfStaffModel.cs" />
     <Compile Include="Staff\View\StaffView.cs">
       <SubType>Form</SubType>
     </Compile>
