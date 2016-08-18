@@ -114,9 +114,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Staff\Control\MakeNewBookingController.cs" />
+    <Compile Include="Staff\Control\PrintSummaryStaffController.cs" />
     <Compile Include="Staff\Control\StaffController.cs" />
     <Compile Include="Staff\Control\UpdateInformationOfStaffController.cs" />
     <Compile Include="Staff\Model\MakeNewBookingModel.cs" />
+    <Compile Include="Staff\Model\PrintSummaryStaffModel.cs" />
     <Compile Include="Staff\Model\UpdateInformationOfStaffModel.cs" />
     <Compile Include="Staff\View\MakeNewBookingView.cs">
       <SubType>Form</SubType>
@@ -126,6 +128,12 @@
     </Compile>
     <Compile Include="Staff\Control\AddNewCustomerController.cs" />
     <Compile Include="Staff\Model\AddNewCustomerModel.cs" />
+    <Compile Include="Staff\View\PrintSumaryStaffView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff\View\PrintSumaryStaffView.Designer.cs">
+      <DependentUpon>PrintSumaryStaffView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Staff\View\StaffView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +191,9 @@
     </Compile>
     <EmbeddedResource Include="Staff\View\MakeNewBookingView.resx">
       <DependentUpon>MakeNewBookingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Staff\View\PrintSumaryStaffView.resx">
+      <DependentUpon>PrintSumaryStaffView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Staff\View\StaffView.resx">
       <DependentUpon>StaffView.cs</DependentUpon>

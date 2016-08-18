@@ -58,6 +58,7 @@
             this.btnPrintSummary.TabIndex = 3;
             this.btnPrintSummary.Text = "Print summary";
             this.btnPrintSummary.UseVisualStyleBackColor = true;
+            this.btnPrintSummary.Click += new System.EventHandler(this.btnPrintSummary_Click);
             // 
             // btnMakeNewBooking
             // 

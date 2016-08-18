@@ -51,5 +51,10 @@ namespace HotelReservationSystem.Staff.View
         {
             control.LoadForm(new UpdateInformationOfStaffView(lblUsername.Text));
         }
+
+        private void btnPrintSummary_Click(object sender, EventArgs e)
+        {
+            control.LoadForm(new PrintSumaryStaffView());
+        }
     }
 }
