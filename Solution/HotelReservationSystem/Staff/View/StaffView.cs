@@ -49,7 +49,7 @@ namespace HotelReservationSystem.Staff.View
 
         private void btnUpdateInforStaff_Click(object sender, EventArgs e)
         {
-
+            control.LoadForm(new UpdateInformationOfStaffView(lblUsername.Text));
         }
     }
 }
