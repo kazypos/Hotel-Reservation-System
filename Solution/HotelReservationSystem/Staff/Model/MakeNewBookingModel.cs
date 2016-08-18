@@ -76,7 +76,7 @@ namespace HotelReservationSystem.Staff.Model
                 sql = "INSERT INTO Booking(CustomerCode,BookingDate) VALUES(@customerCode,@bookingDate)";
                 cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@customerCode", customerCode);
-                cmd.Parameters.AddWithValue("@bookingDate", DateTime.Now.ToString());
+                cmd.Parameters.AddWithValue("@bookingDate", DateTime.Now.ToShortDateString());
 
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
