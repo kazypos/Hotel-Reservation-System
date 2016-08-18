@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelReservationSystem.Administration.Control;
 using HotelReservationSystem.Administration.Model;
+
 namespace HotelReservationSystem.Administration.View
 {
     public partial class AddNewRoomView : Form
@@ -42,9 +43,9 @@ namespace HotelReservationSystem.Administration.View
             double price=Convert.ToDouble(txtPrice.Text);
             if (control.AddNewRoom(comboHotel.SelectedValue.ToString(), type, txtRoomNo.Text.ToString(), price,busy))
             {
-                MessageBox.Show("The room has been save!");
+                MessageBox.Show("The room has been added!");
                 txtRoomNo.Text = txtPrice.Text = "";
-
+                txtRoomNo.Focus();
             }
             else
             {
@@ -56,23 +57,32 @@ namespace HotelReservationSystem.Administration.View
 
         private void CheckValidRoom()
         {
-
+            double price;
             if (txtRoomNo.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Please enter room no!");
+            }
+            else if (control.CheckRoomExist(txtRoomNo.Text.Trim()))
+            {
+                MessageBox.Show("The room is exist!");
             }
             else if (txtPrice.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Please enter price!");
             }
-            else if (!control.CheckRoomExist(txtRoomNo.Text.Trim(), comboHotel.SelectedValue.ToString().Trim()))
+            else if (!double.TryParse(txtPrice.Text.Trim(),out price))
+            {
+                MessageBox.Show("Please enter number!");
+            }
+            else if (price<0)
+            {
+                MessageBox.Show("Price must great than or equal 0!");
+            }
+            else 
             {
                 AddNewRoom();
             }
-            else
-            {
-                MessageBox.Show("The room is exist!");
-            }
+            
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
