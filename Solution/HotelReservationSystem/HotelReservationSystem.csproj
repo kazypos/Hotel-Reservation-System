@@ -47,12 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administration\Control\AddNewHotelController.cs" />
+    <Compile Include="Administration\Control\AddNewRoomController.cs" />
     <Compile Include="Administration\Control\AddNewRoomTypeController.cs" />
     <Compile Include="Administration\Control\AddNewStaffController.cs" />
     <Compile Include="Administration\Control\AdministrationController.cs" />
     <Compile Include="Administration\Control\PrintSummaryAdminController.cs" />
     <Compile Include="Administration\Control\UpdateRoomPriceController.cs" />
     <Compile Include="Administration\Model\AddNewHotelModel.cs" />
+    <Compile Include="Administration\Model\AddNewRoomModel.cs" />
     <Compile Include="Administration\Model\AddNewRoomTypeModel.cs" />
     <Compile Include="Administration\Model\AddNewStaffModel.cs" />
     <Compile Include="Administration\Model\PrintSummaryAdminModel.cs" />
@@ -68,6 +70,12 @@
     </Compile>
     <Compile Include="Administration\View\AddNewRoomTypeView.Designer.cs">
       <DependentUpon>AddNewRoomTypeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\View\AddNewRoomView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administration\View\AddNewRoomView.Designer.cs">
+      <DependentUpon>AddNewRoomView.cs</DependentUpon>
     </Compile>
     <Compile Include="Administration\View\AddNewStaffView.cs">
       <SubType>Form</SubType>
@@ -148,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\AddNewRoomTypeView.resx">
       <DependentUpon>AddNewRoomTypeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administration\View\AddNewRoomView.resx">
+      <DependentUpon>AddNewRoomView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administration\View\AddNewStaffView.resx">
       <DependentUpon>AddNewStaffView.cs</DependentUpon>
